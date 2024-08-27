@@ -28,11 +28,11 @@ jobs:
 
     - name: Build Docker Image
       run: |
-      docker build -t fastapi-app .
+        docker build -t fastapi-app .
 
     - name: Run Docker Container
       run: |
-      docker run -d -p 8080:8080 fastapi-app
+        docker run -d -p 8080:8080 fastapi-app
 
     - name: Check container health
       run: |
