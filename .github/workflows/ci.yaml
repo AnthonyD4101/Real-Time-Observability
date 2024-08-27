@@ -26,15 +26,23 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
+    - name: Run Tests
+      env:
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        JAEGER_AGENT_HOSTNAME: ${{ secrets.JAEGER_AGENT_HOSTNAME }}
+        JAEGER_AGENT_PORT: ${{ secrets.JAEGER_AGENT_PORT }}
+      run: |
+        pytest --asyncio-mode=auto --disable-warnings
+
     - name: Build Docker Image
       run: |
         docker build -t fastapi-app .
 
-    - name: Run Tests
-      run: |
-        pytest --asyncio-mode=auto --disable-warnings
-
     - name: Run Docker Container
+      env:
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        JAEGER_AGENT_HOSTNAME: ${{ secrets.JAEGER_AGENT_HOSTNAME }}
+        JAEGER_AGENT_PORT: ${{ secrets.JAEGER_AGENT_PORT }}
       run: |
         docker run -d -p 8080:8080 fastapi-app
 

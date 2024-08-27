@@ -1,4 +1,6 @@
+import os
 from fastapi import FastAPI
+from dotenv import load_dotenv
 from .middleware import LoggingMiddleware
 from .database import collection
 from .models import UserInfo
@@ -9,12 +11,18 @@ from opentelemetry.exporter.jaeger.thrift import JaegerExporter
 from opentelemetry.instrumentation.fastapi import FastAPIInstrumentor
 import uvicorn
 
+load_dotenv()
+
+database_url = os.getenv("DATABASE_URL")
+jaeger_host = os.getenv("JAEGER_AGENT_HOSTNAME")
+jaeger_port = os.getenv("JAEGER_AGENT_PORT")
+
 trace.set_tracer_provider(TracerProvider())
 tracer = trace.get_tracer(__name__)
 
 jaeger_exporter = JaegerExporter(
-    agent_host_name = 'localhost',
-    agent_port = 5775,
+    agent_host_name = jaeger_host,
+    agent_port = jaeger_port,
 )
 
 span_processor = BatchSpanProcessor(jaeger_exporter)

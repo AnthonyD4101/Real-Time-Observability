@@ -1,7 +1,14 @@
-import pytest
+import pytest, os
+from dotenv import load_dotenv
 from httpx import AsyncClient, ASGITransport
 from unittest.mock import patch, MagicMock
 from fastapi_project.main import app
+
+load_dotenv()
+
+def test_environment_variable():
+    database_url = os.getenv("DATABASE_URL")
+    assert database_url is not None
 
 @pytest.mark.asyncio
 async def test_main_root():
