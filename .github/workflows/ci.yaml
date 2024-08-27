@@ -30,6 +30,10 @@ jobs:
       run: |
         docker build -t fastapi-app .
 
+    - name: Run Tests
+      run: |
+        pytest --asyncio-mode=auto --disable-warnings
+
     - name: Run Docker Container
       run: |
         docker run -d -p 8080:8080 fastapi-app
