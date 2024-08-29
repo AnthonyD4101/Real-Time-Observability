@@ -27,3 +27,9 @@ pytest
 docker build -t fastapi-app .
 
 docker run -d -p 8080:8080 fastapi-app
+
+# Viewing in localhost
+
+FastAPI UI: http://localhost:8080/docs
+
+Jaeger UI: http://localhost:16686
