@@ -1,8 +1,12 @@
+import os
+from dotenv import load_dotenv
 from pymongo import MongoClient
 
-DATABASE_URL = "mongodb+srv://fastAdmin:password123!@personalprojects.uuknh.mongodb.net/?retryWrites=true&w=majority&appName=PersonalProjects"
+load_dotenv()
 
-client = MongoClient(DATABASE_URL)
+database_url = os.getenv("DATABASE_URL")
+
+client = MongoClient(database_url)
 
 try:
     client.admin.command('ping')

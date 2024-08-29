@@ -1,0 +1,1 @@
+Simple FastAPI application integrated with MongoDB and Jaeger for distributed tracing and telemetry. It provides a basic API endpoint and demonstrates how to log and trace requests across the application.
