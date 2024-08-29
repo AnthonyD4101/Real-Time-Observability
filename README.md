@@ -25,15 +25,12 @@ pytest
 # JeagerUI Docker Command
 
 docker run -d --name jaeger \
- -e COLLECTOR_ZIPKIN_HTTP_PORT=9411 \
- -e JAEGER_AGENT_PORT=5775 \
- -e JAEGER_AGENT_HOST=127.0.0.1 \
- -e JAEGER_SERVICE_NAME=my-service \
- -p 5775:5775 \
- -p 14250:14250 \
- -p 14268:14268 \
- -p 16686:16686 \  
- jaegertracing/all-in-one:1.35
+  -e COLLECTOR_ZIPKIN_HTTP_PORT=9411 \
+  -p 5775:5775/udp \
+  -p 14250:14250 \
+  -p 14268:14268 \
+  -p 16686:16686 \
+  jaegertracing/all-in-one:1.35
 
 # Build Docker Image
 
