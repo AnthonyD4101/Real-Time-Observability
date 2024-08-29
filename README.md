@@ -14,29 +14,19 @@ JAEGER_AGENT_HOSTNAME = localhost
 
 JAEGER_AGENT_PORT = 5775
 
-# Run the application:
-
-uvicorn fastapi_project.main:app --host 0.0.0.0 --port 8080
-
 # Running tests:
 
 pytest
 
 # JeagerUI Docker Command
 
-docker run -d --name jaeger \
-  -e COLLECTOR_ZIPKIN_HTTP_PORT=9411 \
-  -p 5775:5775/udp \
-  -p 14250:14250 \
-  -p 14268:14268 \
-  -p 16686:16686 \
-  jaegertracing/all-in-one:1.35
+docker run -d --name jaeger -e COLLECTOR_ZIPKIN_HTTP_PORT=9411 -p 5775:5775/udp -p 14250:14250 -p 14268:14268 -p 16686:16686 jaegertracing/all-in-one:1.35
 
-# Build Docker Image
+# FastAPI Build Docker Image
 
 docker build -t fastapi-jaeger-collector .
 
-# Run Docker Image
+# FastAPI Run Docker Image
 
 docker run -d -p 8080:8080 fastapi-jaeger-collector
 
