@@ -16,4 +16,10 @@ except Exception as e:
 
 db = client.get_database("FastAPI")
 
-collection = db.get_collection("Users")
+exploration_production_collection = db.get_collection("ExplorationProduction")
+financial_performance_collection = db.get_collection("FinancialPerformance")
+health_safety_environment_collection = db.get_collection("HealthSafetyEnvironment")
+
+exploration_kpi_collection = db.get_collection("ExplorationKPI")
+financial_kpi_collection = db.get_collection("FinancialKPI")
+health_kpi_collection = db.get_collection("HealthKPI")

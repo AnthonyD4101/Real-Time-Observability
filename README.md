@@ -8,7 +8,7 @@ pip install -r requirements.txt
 
 # Create a .env file to store the following:
 
-DATABASE_URL = mongodb+srv://fastAdmin:password123!@personalprojects.uuknh.mongodb.net/?retryWrites=true&w=majority&appName=PersonalProjects
+DATABASE_URL = mongodb+srv://fastAdmin:admin123!@personalprojects.uuknh.mongodb.net/?retryWrites=true&w=majority&appName=PersonalProjects
 
 JAEGER_AGENT_HOSTNAME = localhost
 
@@ -35,3 +35,13 @@ docker run -d -p 8080:8080 fastapi-jaeger-collector
 FastAPI UI: http://localhost:8080/docs
 
 Jaeger UI: http://localhost:16686
+
+# Accessing Messages from Kafka Topic
+
+`kafka-console-consumer.sh --bootstrap-server broker:9092 --topic exploration_production --from-beginning`
+`kafka-console-consumer.sh --bootstrap-server broker:9092 --topic financial_performance --from-beginning`
+`kafka-console-consumer.sh --bootstrap-server broker:9092 --topic health_safety_environment --from-beginning`
+
+# Running Kafka Consumer for Raw Data and KPI Data to be Sent to MongoDB
+
+`python -m fastapi_project.kafka_consumer`
