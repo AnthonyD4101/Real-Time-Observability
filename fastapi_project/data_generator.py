@@ -46,7 +46,7 @@ async def send_fake_data():
             await client.post("http://localhost:8080/add_health_safety_environment", json = hse_data.model_dump())
 
             print("Fake data sent to all endpoints.")
-            await asyncio.sleep(5)
+            await asyncio.sleep(1)
 
 if __name__ == "__main__":
     asyncio.run(send_fake_data())
