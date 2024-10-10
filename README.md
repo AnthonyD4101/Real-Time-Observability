@@ -15,10 +15,14 @@ pip install -r requirements.txt
 ## Create a .env file to store the following:
 
 DOCKER_USERNAME={Enter Docker Username Credentials}
+
 DOCKER_PASSWORD={Enter Docker Password Credentials}
+
 DATABASE_URL=mongodb+srv://fastAdmin:admin123@personalprojects.uuknh.mongodb.net/?retryWrites=true&w=majority&appName=PersonalProjects
 JAEGER_AGENT_HOSTNAME=jaeger
+
 JAEGER_AGENT_PORT=6831
+
 KAFKA_BROKER=broker:29092
 
 ## Run Docker Compose File (FastAPI, Jaeger, MongoDB, Apache Zookeeper and Apache Kafka Setup)
